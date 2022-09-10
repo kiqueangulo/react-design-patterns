@@ -7,14 +7,16 @@ import { ResourceLoader } from "./ResourceLoader";
 import { UserInfo } from "./UserInfo";
 import { ProductInfo } from "./ProductInfo";
 
+const getServerData = (url) => async () => {
+  const response = await axios.get(url);
+  return response.data;
+};
+
 function App() {
   return (
     <>
       <DataSource
-        getDataFunc={async () => {
-          const response = await axios.get("http://localhost:8080/users/123");
-          return response.data;
-        }}
+        getDataFunc={getServerData("http://localhost:8080/users/123")}
         resourceName="user"
       >
         <UserInfo />

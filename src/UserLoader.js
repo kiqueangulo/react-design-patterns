@@ -15,7 +15,7 @@ export const UserLoader = ({ userId, children }) => {
         console.log(error);
       }
     })();
-  }, []);
+  }, [userId]);
 
   return (
     <>

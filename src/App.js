@@ -1,5 +1,8 @@
+import axios from "axios";
+
 import { CurrentUserLoader } from "./CurrentUserLoader";
 import { UserLoader } from "./UserLoader";
+import { DataSource } from "./DataSource";
 import { ResourceLoader } from "./ResourceLoader";
 import { UserInfo } from "./UserInfo";
 import { ProductInfo } from "./ProductInfo";
@@ -7,19 +10,15 @@ import { ProductInfo } from "./ProductInfo";
 function App() {
   return (
     <>
-      <ResourceLoader
-        resourceUrl="http://localhost:8080/users/123"
+      <DataSource
+        getDataFunc={async () => {
+          const response = await axios.get("http://localhost:8080/users/123");
+          return response.data;
+        }}
         resourceName="user"
       >
         <UserInfo />
-      </ResourceLoader>
-
-      <ResourceLoader
-        resourceUrl="http://localhost:8080/products/1234"
-        resourceName="product"
-      >
-        <ProductInfo />
-      </ResourceLoader>
+      </DataSource>
     </>
   );
 }

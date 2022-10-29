@@ -1,9 +1,9 @@
-import { ControlledForm } from "./ControlledForm"
+import { UncontrolledModal } from "./UncontrolledModal"
 
 function App() {
   return (
     <>
-      <ControlledForm />
+      <UncontrolledModal />
     </>
   )
 }
